@@ -12,15 +12,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup Unity
+    - name: Build Project
       uses: game-ci/unity-builder@v4
+      env:
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
       with:
         unityVersion: 2022.3.55f1c1
-        targetPlatform: StandaloneWindows64
-
-    - name: Build
-      uses: game-ci/unity-builder@v4
-      with:
         targetPlatform: StandaloneWindows64
 
     - name: Upload Build
